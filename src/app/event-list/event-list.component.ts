@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-event-list',
@@ -9,14 +10,10 @@ export class EventListComponent implements OnInit {
 
   events: any[];
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.events = [
-      {name: 'NgConf', date: '1/2/2019', location: {city: 'Atlanta'}},
-      {name: 'NFJS', date: '4/2/2019', location: {city: 'New York'}},
-      {name: 'Google IO', date: '4/16/2019', location: {city: 'San Francisco'}}
-    ]
+    this.events = this.eventService.getEvents();
   }
 
 }
