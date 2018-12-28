@@ -1,9 +1,10 @@
-import { EventDetailComponent } from './event-detail/event-detail.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventListComponent } from './event-list/event-list.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { EventRouteActivatorService } from './event-route-activator.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 // An Angular best practice is to load and configure the router in a separate, top-level module
 // that is dedicated to routing and imported by the root AppModule.
@@ -13,6 +14,7 @@ import { EventRouteActivatorService } from './event-route-activator.service';
 
 const routes: Routes = [
   { path: 'events', component: EventListComponent },
+  { path: 'events/new', component: CreateEventComponent },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorService] },
   { path: 'not-found', component: NotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
