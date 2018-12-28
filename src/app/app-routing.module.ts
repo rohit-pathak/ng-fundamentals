@@ -14,7 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'events', component: EventListComponent },
-  { path: 'events/new', component: CreateEventComponent },
+  { path: 'events/new', component: CreateEventComponent, canDeactivate: [EventRouteActivatorService] },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorService] },
   { path: 'not-found', component: NotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
