@@ -20,10 +20,6 @@ export class EventRouteActivatorService implements CanActivate, CanDeactivate<Cr
         return exists;
       })
     )
-    //let exists = this.eventService.getEvents().some(e => e.id === +snapshot.params['id']);
-    //if (!exists) this.router.navigate(['/not-found']);
-
-    //return exists;
   }
 
   canDeactivate(component: CreateEventComponent) {

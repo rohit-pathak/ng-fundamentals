@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 
@@ -10,10 +11,11 @@ export class EventListComponent implements OnInit {
 
   events: any[];
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.eventService.getEvents().subscribe(events => this.events = events);
+    // this data in the route comes from the resolver
+    this.events = this.route.snapshot.data['events'];
   }
 
 }
