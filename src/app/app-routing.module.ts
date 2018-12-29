@@ -17,12 +17,13 @@ const routes: Routes = [
   { path: 'events', component: EventListComponent, resolve: {events: EventListResolverService} },
   { path: 'events/new', component: CreateEventComponent, canDeactivate: [EventRouteActivatorService] },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorService] },
+  { path: 'user', loadChildren: './user/user.module#UserModule'},
   { path: 'not-found', component: NotFoundComponent },
-  { path: '', redirectTo: '/events', pathMatch: 'full' },
+  { path: '', redirectTo: '/events', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

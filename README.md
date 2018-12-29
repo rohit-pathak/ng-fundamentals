@@ -24,3 +24,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 # Notes
 
+### To generate a component in a module folder:
+
+`$ ng g component user/profile -m=user`
+
+
+
