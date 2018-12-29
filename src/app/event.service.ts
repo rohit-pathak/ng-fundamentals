@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 const EVENTS = [
   { id: 1, name: 'Angular Connect', imageUrl: '/assets/images/angularconnect-shield.png', date: '9/26/2036', time: '10am', location: { address: '1 London Rd', city: 'London', country: 'England' } },
@@ -14,8 +15,13 @@ export class EventService {
 
   constructor() { }
 
-  getEvents(): any[] {
-    return EVENTS;
+  getEvents() {
+    let subject = new Subject<any[]>();
+    setTimeout(() => {
+      subject.next(EVENTS);
+      subject.complete();
+    })
+    return subject;
   }
 
   getEvent(id: number): any {
