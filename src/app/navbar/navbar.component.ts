@@ -8,12 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  loggedIn: boolean;
-
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.loggedIn = this.authService.isAuthenticated();
   }
 
 }
