@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +23,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   // Note that you don't need to explicitly include service here as the {providedIn: 'root'} option
   // of the @Injectable() decorator takes care of that (Angular 6+)
