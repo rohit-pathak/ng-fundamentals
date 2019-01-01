@@ -9,6 +9,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CreateSessionComponent } from './create-session/create-session.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavbarComponent,
     EventDetailComponent,
     NotFoundComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,

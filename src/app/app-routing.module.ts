@@ -1,3 +1,4 @@
+import { CreateSessionComponent } from './create-session/create-session.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateEventComponent } from './create-event/create-event.component';
@@ -16,6 +17,7 @@ import { EventListResolverService } from './event-list-resolver.service';
 const routes: Routes = [
   { path: 'events', component: EventListComponent, resolve: {events: EventListResolverService} },
   { path: 'events/new', component: CreateEventComponent, canDeactivate: [EventRouteActivatorService] },
+  { path: 'events/sessions/new', component: CreateSessionComponent},
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorService] },
   { path: 'user', loadChildren: './user/user.module#UserModule'},
   { path: 'not-found', component: NotFoundComponent },
