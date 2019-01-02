@@ -10,6 +10,7 @@ import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
+import { SessionListComponent } from './session-list/session-list.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CreateSessionComponent } from './create-session/create-session.componen
     EventDetailComponent,
     NotFoundComponent,
     CreateEventComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [
     BrowserModule,
