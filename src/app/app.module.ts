@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
 import { SessionListComponent } from './session-list/session-list.component';
+import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SessionListComponent } from './session-list/session-list.component';
     NotFoundComponent,
     CreateEventComponent,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,

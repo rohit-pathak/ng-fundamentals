@@ -1,0 +1,9 @@
+<div class="well">
+  <h4 (click)="collapse = !collapse">
+    <ng-content select="[well-title]"></ng-content>
+  </h4>
+  <div [hidden]="collapse">
+      <ng-content select="[well-body]"></ng-content>
+  </div>
+  
+</div>
