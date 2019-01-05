@@ -16,8 +16,21 @@
       </address>
     </div>
   </div>
-  
-  <h5 class="page-header">Sessions <a class="btn btn-sm btn-primary" (click)="addMode = true">Add Session</a></h5>
-  <app-session-list *ngIf="!addMode" [sessions]="event?.sessions"></app-session-list>
+
+  <h4 class="page-header">
+    Sessions
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-default" [class.active]="sortBy === 'name'" (click)="sortBy = 'name'">Name</button>
+      <button type="button" class="btn btn-default" [class.active]="sortBy === 'votes'" (click)="sortBy = 'votes'">Votes</button>
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-default" [class.active]="filterBy === 'all'" (click)="filterBy = 'all'">All</button>
+      <button type="button" class="btn btn-default" [class.active]="filterBy === 'beginner'" (click)="filterBy = 'beginner'">Beginner</button>
+      <button type="button" class="btn btn-default" [class.active]="filterBy === 'intermediate'" (click)="filterBy = 'intermediate'">Intermediate</button>
+      <button type="button" class="btn btn-default" [class.active]="filterBy === 'advanced'" (click)="filterBy = 'advanced'">Advanced</button>
+    </div>
+    <a class="btn btn-sm btn-primary pull-right" (click)="addMode = true">Add Session</a>
+  </h4>
+  <app-session-list *ngIf="!addMode" [sessions]="event?.sessions" [levelFilter]="filterBy" [sortField]="sortBy"></app-session-list>
   <app-create-session *ngIf="addMode" (cancel)="addMode = false" (save)="saveSession($event)"></app-create-session>
 </div>

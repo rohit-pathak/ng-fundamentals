@@ -1,4 +1,4 @@
-<app-collapsible-well *ngFor="let session of sessions">
+<app-collapsible-well *ngFor="let session of visibleSessions">
   <div well-title>
     <div>{{session.name}} <i *ngIf="session.voters.length > 3" class="glyphicon glyphicon-fire text-danger"></i></div>
   </div>
@@ -6,6 +6,7 @@
     <h6>{{session.presenter}}</h6>
     <span>Duration: {{session.duration | duration}}</span><br />
     <span>Level: {{session.level}}</span>
+    <span>Votes: {{session.voters.length}}</span>
     <p>{{session.abstract}}</p>
   </div>
 </app-collapsible-well>
