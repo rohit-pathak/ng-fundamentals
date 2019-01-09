@@ -13,7 +13,9 @@ import { CreateSessionComponent } from './create-session/create-session.componen
 import { SessionListComponent } from './session-list/session-list.component';
 import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
 import { DurationPipe } from './duration.pipe';
+import { TOASTR_TOKEN, Toastr } from './toastr.service';
 
+let toastr: Toastr = window['toastr'];
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { DurationPipe } from './duration.pipe';
   ],
   // Note that you don't need to explicitly include service here as the {providedIn: 'root'} option
   // of the @Injectable() decorator takes care of that (Angular 6+)
-  providers: [], 
+  providers: [
+    { provide: TOASTR_TOKEN, useValue: toastr }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
