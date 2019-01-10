@@ -1,4 +1,17 @@
 export interface Event {
+    id: number;
+    name: string;
+    price: number;
+    imageUrl: string;
+    date: string;
+    time: string;
+    location?: {
+        address: string;
+        city: string;
+        country: string;
+    },
+    onlineUrl?: string;
+    sessions: Session[];
 }
 
 export interface Session {

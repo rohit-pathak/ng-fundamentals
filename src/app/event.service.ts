@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Event, Session } from './event';
 
-const EVENTS = [
+const EVENTS: Event[] = [
   {
     id: 1, name: 'Angular Connect', price: 499, imageUrl: '/assets/images/angularconnect-shield.png', date: '9/26/2036', time: '10am', location: { address: '1 London Rd', city: 'London', country: 'England' },
     sessions: [{ "id": 0, "name": "eu consectetur", "presenter": "Rosalyn Alexander", "duration": 2, "level": "intermediate", "abstract": "Pariatur ipsum Lorem nisi eu velit sint. Fugiat tempor ut exercitation in. Sit magna culpa tempor ullamco duis aliqua non enim nulla sint nulla.", "voters": [] }, { "id": 1, "name": "laborum elit", "presenter": "Ray Reilly", "duration": 2, "level": "advanced", "abstract": "Consectetur velit do reprehenderit occaecat ipsum laboris aliquip laboris. Sit ut anim magna voluptate sint esse tempor eu laborum ex exercitation commodo. Eu eu aliqua incididunt nisi ad aliquip ipsum eu pariatur. Deserunt culpa laborum occaecat cillum veniam pariatur Lorem irure proident. Nostrud irure veniam aute adipisicing quis cupidatat veniam irure occaecat ullamco consectetur velit exercitation.", "voters": ['Rohit Pathak', 'Harry Potter', 'Ron Weasly', 'Hermione Granger'] }, { "id": 2, "name": "aute voluptate", "presenter": "Mcdaniel Davidson", "duration": 2, "level": "beginner", "abstract": "Qui sint mollit id proident cillum commodo minim proident eu officia. Ut eiusmod quis elit ipsum duis incididunt duis adipisicing aliquip mollit velit ullamco. Laborum anim cillum laboris quis do. Anim ipsum irure nostrud do commodo reprehenderit.", "voters": [] }, { "id": 3, "name": "excepteur labore", "presenter": "Jocelyn Robertson", "duration": 3, "level": "beginner", "abstract": "Culpa consectetur sint labore nulla laborum voluptate labore ex aliquip eiusmod cillum non commodo aliqua. Non consequat velit sunt ut dolor do laboris mollit elit. Velit excepteur voluptate qui enim aliqua do minim consequat cupidatat consequat ex irure et Lorem. Exercitation excepteur Lorem est in.", "voters": [] }, { "id": 4, "name": "dolore minim", "presenter": "Gay Preston", "duration": 1, "level": "beginner", "abstract": "Tempor nostrud voluptate amet ut ipsum id mollit mollit labore veniam excepteur incididunt quis elit. Occaecat tempor veniam velit laboris pariatur cillum occaecat. Minim consequat enim exercitation magna quis quis adipisicing veniam occaecat et in ut magna. Sunt nostrud sint commodo in pariatur laboris nisi magna.", "voters": [] }]
@@ -12,7 +13,7 @@ const EVENTS = [
   },
   {
     id: 3, name: 'ng-conf 2037', price: 850, imageUrl: '/assets/images/ng-conf.png', date: '4/15/2037', time: '9am', location: { address: 'The Palatial America Hotel', city: 'Salt Lake City', country: 'USA' },
-    sessions: [{ "id": 0, "name": "commodo irure", "presenter": "Norman Paul", "duration": 3, "level": "beginner", "advanced": "Dolor aliqua exercitation voluptate enim ipsum. Adipisicing aliquip adipisicing in excepteur. Lorem elit proident nisi enim do excepteur nisi minim minim.", "voters": [] }, { "id": 1, "name": "aute ea", "presenter": "Lauri Christensen", "duration": 2, "level": "advanced", "abstract": "Duis esse minim velit amet nulla est mollit excepteur Lorem. Qui sunt ipsum in exercitation excepteur laboris dolor et ad fugiat culpa ipsum. Do enim esse mollit occaecat voluptate nulla aliqua nisi dolore ex elit dolore occaecat. Cupidatat cillum veniam cupidatat incididunt veniam commodo culpa aliquip nulla amet aliqua. Minim pariatur ut sit sint sit in irure quis laboris tempor nisi pariatur dolore.", "voters": [] }, { "id": 2, "name": "anim adipisicing", "presenter": "Cleo Frye", "duration": 2, "level": "beginner", "abstract": "Eu esse proident mollit magna irure enim nostrud culpa dolor non. Excepteur ut velit consectetur voluptate duis. Laboris eiusmod cupidatat fugiat elit irure laboris do. In reprehenderit laboris eu deserunt aliquip excepteur consequat incididunt quis exercitation aliqua duis laboris. Aliquip magna ad velit sint ullamco nulla veniam laborum fugiat do dolore. Officia veniam proident aliqua dolor ullamco pariatur elit aute adipisicing ad minim eiusmod id.", "voters": [] }]
+    sessions: [{ "id": 0, "name": "commodo irure", "presenter": "Norman Paul", "duration": 3, "level": "beginner", "abstract": "Dolor aliqua exercitation voluptate enim ipsum. Adipisicing aliquip adipisicing in excepteur. Lorem elit proident nisi enim do excepteur nisi minim minim.", "voters": [] }, { "id": 1, "name": "aute ea", "presenter": "Lauri Christensen", "duration": 2, "level": "advanced", "abstract": "Duis esse minim velit amet nulla est mollit excepteur Lorem. Qui sunt ipsum in exercitation excepteur laboris dolor et ad fugiat culpa ipsum. Do enim esse mollit occaecat voluptate nulla aliqua nisi dolore ex elit dolore occaecat. Cupidatat cillum veniam cupidatat incididunt veniam commodo culpa aliquip nulla amet aliqua. Minim pariatur ut sit sint sit in irure quis laboris tempor nisi pariatur dolore.", "voters": [] }, { "id": 2, "name": "anim adipisicing", "presenter": "Cleo Frye", "duration": 2, "level": "beginner", "abstract": "Eu esse proident mollit magna irure enim nostrud culpa dolor non. Excepteur ut velit consectetur voluptate duis. Laboris eiusmod cupidatat fugiat elit irure laboris do. In reprehenderit laboris eu deserunt aliquip excepteur consequat incididunt quis exercitation aliqua duis laboris. Aliquip magna ad velit sint ullamco nulla veniam laborum fugiat do dolore. Officia veniam proident aliqua dolor ullamco pariatur elit aute adipisicing ad minim eiusmod id.", "voters": [] }]
   },
   {
     id: 4, name: 'UN Angular Summit', price: 545, imageUrl: '/assets/images/basic-shield.png', date: '6/10/2037', time: '8am', location: { address: 'The UN Angular Center', city: 'New York', country: 'USA' },
@@ -49,5 +50,21 @@ export class EventService {
   updateEvent(event) {
     let i = EVENTS.findIndex(e => e.id === event.id);
     EVENTS[i] = event;
+  }
+
+  searchSessions(term: string) {
+    let result = EVENTS.reduce((a, event) => {
+      let sessions: Session[] = event.sessions.filter(s => s.name.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
+      sessions.forEach((s: any) => s.eventId = event.id);
+      a.push(...sessions);
+      return a;
+    }, []);
+
+    // hack to simulate remote call that returns observable
+    let emitter = new EventEmitter();
+    setTimeout(() => {
+      emitter.emit(result)
+    }, 100);
+    return emitter;
   }
 }
