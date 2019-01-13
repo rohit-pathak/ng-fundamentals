@@ -1,7 +1,7 @@
 import { Session } from './../event';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-event-detail',
@@ -18,7 +18,16 @@ export class EventDetailComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+    // The reason we subscribe to the params observable is that we want to know when the
+    // url changed when we are in the event details component itself (e.g. /events/1 to /events/2).
+    // If we didn't subscribe to this observable and just got the event id from the snapshot,
+    // we wouldn't see the event detail page update as its url (i.e. event id param) changed.
+    this.route.params.forEach((params: Params) => {
+      this.event = this.eventService.getEvent(+params['id']);
+      this.addMode = false;
+      this.filterBy = 'all';
+      this.sortBy = 'votes';
+    });
   }
 
   saveSession(session: Session) {
