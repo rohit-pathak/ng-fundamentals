@@ -24,7 +24,7 @@ export class SessionListComponent implements OnInit, OnChanges {
     if (this.sessions) {
       this.visibleSessions = this.levelFilter === 'all' 
         ? this.sessions.slice(0)
-        : this.sessions.filter(s => s.level === this.levelFilter);
+        : this.sessions.filter(s => s.level.toLocaleLowerCase() === this.levelFilter.toLocaleLowerCase());
       this.visibleSessions.sort(this.getCompareFunction())
     }
   }
