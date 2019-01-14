@@ -359,4 +359,16 @@ export class EventService {
     }, 100);
     return emitter;
   }
+
+  addVoter(user: string, session: Session) {
+    session.voters.push(user);
+  }
+
+  removeVoter(user: string, session: Session) {
+    session.voters = session.voters.filter(v => v !== user);
+  }
+
+  userHasVoted(user: string, session: Session) {
+    return session.voters.some(v => v === user);
+  }
 }

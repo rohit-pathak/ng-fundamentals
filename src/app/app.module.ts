@@ -17,6 +17,7 @@ import { SessionListComponent } from './session-list/session-list.component';
 import { Toastr, TOASTR_TOKEN } from './toastr.service';
 import { SimpleModalComponent } from './simple-modal/simple-modal.component';
 import { ModalTriggerDirective } from './modal-trigger.directive';
+import { UpvoteComponent } from './upvote/upvote.component';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$']
@@ -35,7 +36,8 @@ let jQuery = window['$']
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   imports: [
     BrowserModule,
