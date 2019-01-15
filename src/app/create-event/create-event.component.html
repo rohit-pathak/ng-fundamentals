@@ -24,9 +24,12 @@
         placeholder="event price..." />
     </div>
 
-    <div ngModelGroup="location">
+    <!-- You can also apply the locationValidator to the main form group 
+      since we're considering fields outside this group (onlineUrl) as well (which would be preferable IMO) -->
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" locationValidator>
       <div class="form-group">
         <label for="address">Event Location:</label>
+        <em *ngIf="locationGroup?.invalid && locationGroup?.touched" class="text-danger pull-right">You must either enter the full location or the online URL</em>
         <input (ngModel)="address" name="address" id="address" type="text" class="form-control" placeholder="Address of event..." />
       </div>
       <div class="row">
@@ -41,7 +44,8 @@
 
     <div class="form-group">
       <label for="onlineUrl">Online Url:</label>
-      <input (ngModel)="onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..." />
+      <input (ngModel)="onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" 
+        (change)="locationGroup.control.controls.address.updateValueAndValidity()" placeholder="Online Url..." />
     </div>
     <div class="form-group" [ngClass]="{'has-error': newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched}">
       <label for="imageUrl">Image:</label>
@@ -53,7 +57,7 @@
       <img />
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" [disabled]="newEventForm.invalid" class="btn btn-default" (click)="cancel()">Cancel</button>
+    <button type="submit" [disabled]="newEventForm.invalid" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
   </form>
 </div>

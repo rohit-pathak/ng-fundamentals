@@ -18,6 +18,7 @@ import { Toastr, TOASTR_TOKEN } from './toastr.service';
 import { SimpleModalComponent } from './simple-modal/simple-modal.component';
 import { ModalTriggerDirective } from './modal-trigger.directive';
 import { UpvoteComponent } from './upvote/upvote.component';
+import { LocationValidatorDirective } from './location-validator.directive';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$']
@@ -37,7 +38,8 @@ let jQuery = window['$']
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidatorDirective
   ],
   imports: [
     BrowserModule,
