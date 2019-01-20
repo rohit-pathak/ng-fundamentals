@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,14 +12,14 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
 import { JQ_TOKEN } from './jquery.service';
+import { LocationValidatorDirective } from './location-validator.directive';
+import { ModalTriggerDirective } from './modal-trigger.directive';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SessionListComponent } from './session-list/session-list.component';
-import { Toastr, TOASTR_TOKEN } from './toastr.service';
 import { SimpleModalComponent } from './simple-modal/simple-modal.component';
-import { ModalTriggerDirective } from './modal-trigger.directive';
+import { Toastr, TOASTR_TOKEN } from './toastr.service';
 import { UpvoteComponent } from './upvote/upvote.component';
-import { LocationValidatorDirective } from './location-validator.directive';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$']
@@ -45,7 +46,8 @@ let jQuery = window['$']
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   // Note that you don't need to explicitly include service here as the {providedIn: 'root'} option
   // of the @Injectable() decorator takes care of that (Angular 6+)
