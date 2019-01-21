@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from '../event.service';
+import { Observable } from 'rxjs';
+import { Event } from '../event';
 
 @Component({
   selector: 'app-create-event',
@@ -15,9 +17,10 @@ export class CreateEventComponent implements OnInit {
 
   saveEvent(formData) {
     console.log(formData);
-    this.eventService.saveEvent(formData);
-    this.isDirty = false;
-    this.router.navigate(['/events']);
+    this.eventService.saveEvent(formData).subscribe((event: Event) => {
+      this.isDirty = false;
+      this.router.navigate(['/events']);
+    })
   }
 
   cancel() {

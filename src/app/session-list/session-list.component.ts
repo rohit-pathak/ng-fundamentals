@@ -14,6 +14,7 @@ export class SessionListComponent implements OnInit, OnChanges {
   @Input() sessions: Session[];
   @Input() levelFilter: string;
   @Input() sortField: string;
+  @Input() eventId: number;
   visibleSessions: Session[];
 
 
@@ -38,9 +39,9 @@ export class SessionListComponent implements OnInit, OnChanges {
 
   toggleVote(session) {
     if (this.userHasVoted(session)) {
-      this.eventService.removeVoter(this.auth.currentUser.userName, session);
+      this.eventService.removeVoter(this.eventId, this.auth.currentUser.userName, session);
     } else {
-      this.eventService.addVoter(this.auth.currentUser.userName, session);
+      this.eventService.addVoter(this.eventId, this.auth.currentUser.userName, session);
     }
     // this.visibleSessions.sort(this.getCompareFunction());
   }

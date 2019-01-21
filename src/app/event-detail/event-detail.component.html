@@ -31,6 +31,6 @@
     </div>
     <a class="btn btn-sm btn-primary pull-right" (click)="addMode = true">Add Session</a>
   </h4>
-  <app-session-list *ngIf="!addMode" [sessions]="event?.sessions" [levelFilter]="filterBy" [sortField]="sortBy"></app-session-list>
+  <app-session-list *ngIf="!addMode" [eventId]="event?.id" [sessions]="event?.sessions" [levelFilter]="filterBy" [sortField]="sortBy"></app-session-list>
   <app-create-session *ngIf="addMode" (cancel)="addMode = false" (save)="saveSession($event)"></app-create-session>
 </div>

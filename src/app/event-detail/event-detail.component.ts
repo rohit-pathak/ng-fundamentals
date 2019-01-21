@@ -10,7 +10,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class EventDetailComponent implements OnInit {
 
-  event: any;
+  event: Event;
   addMode: boolean = false;
   filterBy: string = 'all';
   sortBy: string = 'votes';
@@ -34,8 +34,8 @@ export class EventDetailComponent implements OnInit {
     const nextId = Math.max(...this.event.sessions.map(s => s.id)) + 1;
     session.id = nextId;
     this.event.sessions.push(session);
-    this.eventService.updateEvent(this.event);
-    this.addMode = false;
+    this.eventService.saveEvent(this.event).subscribe();
+    this.addMode = false; // you could add this in the subscrive callback
   }
 
 }
