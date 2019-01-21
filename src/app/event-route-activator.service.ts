@@ -8,19 +8,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class EventRouteActivatorService implements CanActivate, CanDeactivate<CreateEventComponent> {
+export class EventRouteActivatorService implements CanDeactivate<CreateEventComponent> {
 
   constructor(private eventService: EventService, private router: Router) { }
 
-  canActivate(snapshot: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.eventService.getEvents().pipe(
-      map(events => {
-        let exists = events.some(e => e.id === +snapshot.params['id']);
-        if (!exists) this.router.navigate(['/not-found']);
-        return exists;
-      })
-    )
-  }
+  // canActivate(snapshot: ActivatedRouteSnapshot): Observable<boolean> {
+  //   return this.eventService.getEvents().pipe(
+  //     map(events => {
+  //       let exists = events.some(e => e.id === +snapshot.params['id']);
+  //       if (!exists) this.router.navigate(['/not-found']);
+  //       return exists;
+  //     })
+  //   )
+  // }
 
   canDeactivate(component: CreateEventComponent) {
     if (component.isDirty) {

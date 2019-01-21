@@ -322,20 +322,14 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<any> {
-    return this.http.get('/api/events')
-      .pipe(catchError(this.handleError('getEvents', [])))
+  getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>('/api/events')
+      .pipe(catchError(this.handleError<Event[]>('getEvents', [])))
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    }
-  }
-
-  getEvent(id: number): any {
-    return EVENTS.find(e => e.id === id);
+  getEvent(id: number): Observable<Event> {
+    return this.http.get<Event>('/api/events/' + id)
+      .pipe(catchError(this.handleError<Event>('getEvents')))
   }
 
   saveEvent(event) {
@@ -376,4 +370,12 @@ export class EventService {
   userHasVoted(user: string, session: Session) {
     return session.voters.some(v => v === user);
   }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    }
+  }
+
 }

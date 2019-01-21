@@ -1,4 +1,4 @@
-import { Session } from './../event';
+import { Session, Event } from './../event';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -22,8 +22,8 @@ export class EventDetailComponent implements OnInit {
     // url changed when we are in the event details component itself (e.g. /events/1 to /events/2).
     // If we didn't subscribe to this observable and just got the event id from the snapshot,
     // we wouldn't see the event detail page update as its url (i.e. event id param) changed.
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
+    this.route.data.forEach(data => {
+      this.event = data['event'];
       this.addMode = false;
       this.filterBy = 'all';
       this.sortBy = 'votes';
