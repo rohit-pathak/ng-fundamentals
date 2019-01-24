@@ -24,7 +24,7 @@ export class EventRouteActivatorService implements CanDeactivate<CreateEventComp
 
   canDeactivate(component: CreateEventComponent) {
     if (component.isDirty) {
-      return window.confirm("You have not saved this event, do you really want to continue?");
+      return window.confirm('You have not saved this event, do you really want to continue?');
     }
     return true;
   }

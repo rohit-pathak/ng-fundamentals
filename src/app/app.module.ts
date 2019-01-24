@@ -21,8 +21,8 @@ import { SimpleModalComponent } from './simple-modal/simple-modal.component';
 import { Toastr, TOASTR_TOKEN } from './toastr.service';
 import { UpvoteComponent } from './upvote/upvote.component';
 
-let toastr: Toastr = window['toastr'];
-let jQuery = window['$']
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 @NgModule({
   declarations: [

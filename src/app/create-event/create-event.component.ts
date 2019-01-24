@@ -11,7 +11,7 @@ import { Event } from '../event';
 })
 export class CreateEventComponent implements OnInit {
 
-  isDirty: boolean = true;
+  isDirty = true;
 
   constructor(private eventService: EventService, private router: Router) { }
 
@@ -20,7 +20,7 @@ export class CreateEventComponent implements OnInit {
     this.eventService.saveEvent(formData).subscribe((event: Event) => {
       this.isDirty = false;
       this.router.navigate(['/events']);
-    })
+    });
   }
 
   cancel() {

@@ -9,7 +9,7 @@ import { restrictedWords } from '../custom-validators';
   styleUrls: ['./create-session.component.css']
 })
 export class CreateSessionComponent implements OnInit {
-  @Output() save = new EventEmitter()
+  @Output() save = new EventEmitter();
   @Output() cancel = new EventEmitter();
   newSessionForm: FormGroup;
   name: FormControl;
@@ -26,8 +26,8 @@ export class CreateSessionComponent implements OnInit {
     this.duration = new FormControl('', Validators.required);
     this.level = new FormControl('', Validators.required);
     this.abstract = new FormControl('', [
-      Validators.required, 
-      Validators.maxLength(400), 
+      Validators.required,
+      Validators.maxLength(400),
       restrictedWords(['foo', 'bar'])]);
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -39,7 +39,7 @@ export class CreateSessionComponent implements OnInit {
   }
 
   saveSession(formData) {
-    let session: Session = {
+    const session: Session = {
       id: undefined,
       name: formData.name,
       presenter: formData.presenter,

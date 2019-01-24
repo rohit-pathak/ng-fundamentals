@@ -5,7 +5,7 @@ import { Directive, OnInit, Inject, ElementRef, Input } from '@angular/core';
   selector: '[modal-trigger]'
 })
 export class ModalTriggerDirective implements OnInit {
-  
+
   el: HTMLElement;
   @Input('modal-trigger') modalId: string;
 

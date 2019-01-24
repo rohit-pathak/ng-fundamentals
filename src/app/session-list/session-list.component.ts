@@ -25,10 +25,10 @@ export class SessionListComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.sessions) {
-      this.visibleSessions = this.levelFilter === 'all' 
+      this.visibleSessions = this.levelFilter === 'all'
         ? this.sessions.slice(0)
         : this.sessions.filter(s => s.level.toLocaleLowerCase() === this.levelFilter.toLocaleLowerCase());
-      this.visibleSessions.sort(this.getCompareFunction())
+      this.visibleSessions.sort(this.getCompareFunction());
     }
   }
 

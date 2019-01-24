@@ -15,23 +15,22 @@ export class EventService {
 
   getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>('/api/events')
-      .pipe(catchError(this.handleError<Event[]>('getEvents', [])))
+      .pipe(catchError(this.handleError<Event[]>('getEvents', [])));
   }
 
   getEvent(id: number): Observable<Event> {
     return this.http.get<Event>('/api/events/' + id)
-      .pipe(catchError(this.handleError<Event>('getEvent')))
+      .pipe(catchError(this.handleError<Event>('getEvent')));
   }
 
   saveEvent(event): Observable<Event> {
-    
     return this.http.post<Event>('/api/events', event, OPTIONS)
-      .pipe(catchError(this.handleError<Event>('saveEvent')))
+      .pipe(catchError(this.handleError<Event>('saveEvent')));
   }
 
   searchSessions(term: string): Observable<Session[]> {
     return this.http.get<Session[]>('/api/sessions/search?search=' + term)
-      .pipe(catchError(this.handleError<Session[]>('searchSessions', [])))
+      .pipe(catchError(this.handleError<Session[]>('searchSessions', [])));
   }
 
   addVoter(eventId: number, user: string, session: Session) {
@@ -58,7 +57,7 @@ export class EventService {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
-    }
+    };
   }
 
 }

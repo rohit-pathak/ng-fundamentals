@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   searchSessions(term) {
     this.eventService.searchSessions(term).subscribe(sessions => {
       this.foundSessions = sessions;
-    })
+    });
   }
 
 }

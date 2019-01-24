@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
     <h1 class="errorMessage">404'd</h1>
   `,
   styles: [`
-    .errorMessage { 
-      margin-top:150px; 
+    .errorMessage {
+      margin-top:150px;
       font-size: 170px;
-      text-align: center; 
+      text-align: center;
     }`]
 })
 export class NotFoundComponent implements OnInit {

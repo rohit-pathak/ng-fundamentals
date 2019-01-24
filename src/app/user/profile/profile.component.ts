@@ -17,8 +17,12 @@ export class ProfileComponent implements OnInit {
     @Inject(TOASTR_TOKEN) private toastr: Toastr) { }
 
   ngOnInit() {
-    let firstName: FormControl = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
-    let lastName: FormControl = new FormControl(this.authService.currentUser.lastName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
+    const firstName: FormControl = new FormControl(
+      this.authService.currentUser.firstName,
+      [Validators.required, Validators.pattern('[a-zA-Z].*')]);
+    const lastName: FormControl = new FormControl(
+      this.authService.currentUser.lastName,
+      [Validators.required, Validators.pattern('[a-zA-Z].*')]);
     this.profileForm = new FormGroup({ firstName, lastName });
   }
 
@@ -32,12 +36,12 @@ export class ProfileComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/events'])
+    this.router.navigate(['/events']);
   }
 
   logout() {
     this.authService.logout().subscribe(() => {
-      this.router.navigate(['/user/login'])
-    })
+      this.router.navigate(['/user/login']);
+    });
   }
 }

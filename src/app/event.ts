@@ -9,7 +9,7 @@ export interface Event {
         address: string;
         city: string;
         country: string;
-    },
+    };
     onlineUrl?: string;
     sessions: Session[];
 }
@@ -19,7 +19,7 @@ export interface Session {
     name: string;
     presenter: string;
     duration: number;
-    level: string
+    level: string;
     abstract: string;
     voters: string[];
 }
