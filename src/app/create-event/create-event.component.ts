@@ -12,6 +12,15 @@ import { Event } from '../event';
 export class CreateEventComponent implements OnInit {
 
   isDirty = true;
+  name: string;
+  date: string;
+  time: string;
+  price: number;
+  address: string;
+  city: string;
+  country: string;
+  onlineUrl: string;
+  imageUrl: string;
 
   constructor(private eventService: EventService, private router: Router) { }
 
